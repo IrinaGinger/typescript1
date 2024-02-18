@@ -12,16 +12,14 @@ export default class Cart {
     }
 
     sumWithoutDiscount(): number {
-        let sum: number = this._items.reduce((acc, currentValue) => acc + currentValue.price, 0);
-        return sum;
+        return this._items.reduce((acc: number, currentValue: Buyable) => acc + currentValue.price, 0);
     }
 
     sumWithDiscount(discount: number): number {
-        let sum: number = this._items.reduce((acc, currentValue) => acc + currentValue.price, 0) * (1 - discount / 100);
-        return sum;
+        return this._items.reduce((acc: number, currentValue: Buyable) => acc + currentValue.price, 0) * (1 - discount / 100);
     }
 
     delete(id : number) : void {
-        this._items = this._items.filter((item) => item.id !== id);
+        this._items = this._items.filter((item: Buyable) => item.id !== id);
     }
 }
